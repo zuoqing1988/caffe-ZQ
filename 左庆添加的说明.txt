@@ -1,0 +1,2 @@
+﻿CMAKE-GUI里面
+BLAS选open
