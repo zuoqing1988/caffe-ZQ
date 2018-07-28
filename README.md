@@ -54,23 +54,23 @@
   
   #elseif(${CUDA_ARCH_NAME} STREQUAL "Maxwell")
   
-  #  set(__cuda_arch_bin "50")
+  #set(__cuda_arch_bin "50")
   
   #elseif(${CUDA_ARCH_NAME} STREQUAL "Pascal")
   
-  #  set(__cuda_arch_bin "60 61")
+  #set(__cuda_arch_bin "60 61")
   
   #elseif(${CUDA_ARCH_NAME} STREQUAL "All")
   
-  #  set(__cuda_arch_bin ${Caffe_known_gpu_archs})
+  #set(__cuda_arch_bin ${Caffe_known_gpu_archs})
   
   #elseif(${CUDA_ARCH_NAME} STREQUAL "Auto")
   
-  #  caffe_detect_installed_gpus(__cuda_arch_bin)
+  #caffe_detect_installed_gpus(__cuda_arch_bin)
   
   #else()  # (${CUDA_ARCH_NAME} STREQUAL "Manual")
   
-  #  set(__cuda_arch_bin ${CUDA_ARCH_BIN})
+  #set(__cuda_arch_bin ${CUDA_ARCH_BIN})
   
   #endif()
   
@@ -84,7 +84,7 @@
   
   #elseif(${CUDA_ARCH_NAME} STREQUAL "Maxwell")
   
-  #  set(__cuda_arch_bin "50")
+  #set(__cuda_arch_bin "50")
   
   #elseif(${CUDA_ARCH_NAME} STREQUAL "Pascal")
   
@@ -92,15 +92,15 @@
   
   #elseif(${CUDA_ARCH_NAME} STREQUAL "All")
   
-  #  set(__cuda_arch_bin ${Caffe_known_gpu_archs})
+  #set(__cuda_arch_bin ${Caffe_known_gpu_archs})
   
   #elseif(${CUDA_ARCH_NAME} STREQUAL "Auto")
   
-  #  caffe_detect_installed_gpus(__cuda_arch_bin)
+  #caffe_detect_installed_gpus(__cuda_arch_bin)
   
   #else()  # (${CUDA_ARCH_NAME} STREQUAL "Manual")
   
-  #  set(__cuda_arch_bin ${CUDA_ARCH_BIN})
+  #set(__cuda_arch_bin ${CUDA_ARCH_BIN})
   
   #endif()
   
