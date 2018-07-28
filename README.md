@@ -1,36 +1,36 @@
 
-# 这个版本是左庆在BLVC版本基础上增加sphereface相关内容，depthwise convolution相关内容， SSD相关内容。
+**这个版本是左庆在BLVC版本基础上增加sphereface相关内容，depthwise convolution相关内容， SSD相关内容。
 
-# 只在windows 7，windows 10操作系统上用Visual Studio 2015 win64 尝试过编译。
+**只在windows 7，windows 10操作系统上用Visual Studio 2015 win64 尝试过编译。
 
-# 1.下载cmake
+**1.下载cmake
 
-# 2.命令行进入根目录。启动cmake-gui
+**2.命令行进入根目录。启动cmake-gui
 
-# 3.BLAS选open
+**3.BLAS选open
 
-# 4.点击config。会自动下载相关依赖库
+**4.点击config。会自动下载相关依赖库
 
-# 5.添加CUDNN路径（不填也能编译）
+**5.添加CUDNN路径（不填也能编译）
 
-# 6.点击generate
+**6.点击generate
 
-# 7.点击Open Project进入Visual Studio
+**7.点击Open Project进入Visual Studio
 
-# 8.开始编译
+**8.开始编译
 
-# 9.如果是CUDA9，编译的时候可能出现错误，在两处更改。然后重新config, generate
+**9.如果是CUDA9，编译的时候可能出现错误，在两处更改。然后重新config, generate
 
     
-（1）自动下载的boost里面C:\Users\ZQ\.caffe\dependencies\libraries_v140_x64_py27_1.1.0\libraries\include\boost-1_61\boost\config\compiler\nvcc.hpp注释掉这三行（line22-24）
+## （1）自动下载的boost里面C:\Users\ZQ\.caffe\dependencies\libraries_v140_x64_py27_1.1.0\libraries\include\boost-1_61\boost\config\compiler\nvcc.hpp注释掉这三行（line22-24）
 
-//#if !defined(__CUDACC_VER__) || (__CUDACC_VER__ < 70500)
+//#if !defined(\__CUDACC_VER__) || (\__CUDACC_VER__ < 70500)
 
 //#   define BOOST_NO_CXX11_VARIADIC_TEMPLATES
 
 //#endif
 
-(2)根目录\cmake文件夹下cuda.cmake里注释掉这几行（line91-105）
+## (2)根目录\cmake文件夹下cuda.cmake里注释掉这几行（line91-105）
 
   #if(${CUDA_ARCH_NAME} STREQUAL "Fermi")
     
@@ -62,7 +62,7 @@
   
   #endif()
   
-  **添加  
+  ## 添加  
   
   set(\__cuda_arch_bin "60 61")
   
