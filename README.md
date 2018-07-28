@@ -88,7 +88,7 @@
   
   #elseif(${CUDA_ARCH_NAME} STREQUAL "Pascal")
   
-  #  set(__cuda_arch_bin "60 61")
+  #set(__cuda_arch_bin "60 61")
   
   #elseif(${CUDA_ARCH_NAME} STREQUAL "All")
   
