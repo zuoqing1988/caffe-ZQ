@@ -1,3 +1,57 @@
+
+这个版本是左庆在BLVC版本基础上增加sphereface相关内容，depthwise convolution相关内容， SSD相关内容。
+
+
+只在windows 7，windows 10操作系统上尝试过编译。
+
+1.下载cmake
+
+2.命令行进入根目录。启动cmake-gui
+
+3.BLAS选open
+
+4.点击config。会自动下载相关依赖库
+
+5.添加CUDNN路径（不填也能编译）
+
+6.点击generate
+
+7.点击Open Project进入Visual Studio
+
+8.开始编译
+
+9.如果是CUDA9，编译的时候可能出现错误，在两处更改。然后重新config, generate
+
+（1）自动下载的boost里面C:\Users\ZQ\.caffe\dependencies\libraries_v140_x64_py27_1.1.0\libraries\include\boost-1_61\boost\config\compiler\nvcc.hpp注释掉这三行（line22-24）
+
+//#if !defined(__CUDACC_VER__) || (__CUDACC_VER__ < 70500)
+//#   define BOOST_NO_CXX11_VARIADIC_TEMPLATES
+//#endif
+
+(2)根目录\cmake文件夹下cuda.cmake里注释掉这几行（line91-105）
+
+  #if(${CUDA_ARCH_NAME} STREQUAL "Fermi")
+  #  set(__cuda_arch_bin "20 21(20)")
+  #elseif(${CUDA_ARCH_NAME} STREQUAL "Kepler")
+  #  set(__cuda_arch_bin "30 35")
+  #elseif(${CUDA_ARCH_NAME} STREQUAL "Maxwell")
+  #  set(__cuda_arch_bin "50")
+  #elseif(${CUDA_ARCH_NAME} STREQUAL "Pascal")
+  #  set(__cuda_arch_bin "60 61")
+  #elseif(${CUDA_ARCH_NAME} STREQUAL "All")
+  #  set(__cuda_arch_bin ${Caffe_known_gpu_archs})
+  #elseif(${CUDA_ARCH_NAME} STREQUAL "Auto")
+  #  caffe_detect_installed_gpus(__cuda_arch_bin)
+  #else()  # (${CUDA_ARCH_NAME} STREQUAL "Manual")
+  #  set(__cuda_arch_bin ${CUDA_ARCH_BIN})
+  #endif()
+  
+  添加  
+  
+  set(__cuda_arch_bin "60 61")
+
+##############################################################
+
 # Windows Caffe
 
 **This is an experimental, community based branch led by Guillaume Dumont (@willyd). It is a work-in-progress.**
