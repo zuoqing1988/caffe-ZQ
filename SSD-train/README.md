@@ -46,4 +46,4 @@ voc\solver-dw.prototxt
 
 **Forward**
 
-请移步https://github.com/zuoqing1988/ZQCNN-v0.0，这里比mini-caffe更快的前向网络
+请移步https://github.com/zuoqing1988/ZQCNN-v0.0  这是比mini-caffe更快的前向网络
