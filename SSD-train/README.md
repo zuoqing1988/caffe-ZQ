@@ -31,7 +31,7 @@ voc\solver.prototxt
 
 merge_bn.py
 
-是拷贝自https://github.com/chuanqi305/MobileNet-SSD，
+是拷贝自https://github.com/chuanqi305/MobileNet-SSD
 
 
 voc\MobileNetSSD_test-dw.prototxt
