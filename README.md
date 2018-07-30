@@ -11,7 +11,7 @@
 
 **4.点击config。会自动下载相关依赖库**
 
-**5.添加CUDNN路径（不填也能编译**
+**5.添加CUDNN路径（不填也能编译）**
 
 **6.点击generate**
 
@@ -21,6 +21,7 @@
 
 **9.如果是CUDA9，编译的时候可能出现错误，在两处更改。然后重新config, generate**
 
+我试过win7 CUDA9.0 GTX1080Ti 和 win10 CUDA9.0 GTX950M。两台机器都不能勾选USE_CUDNN
     
 （1）自动下载的boost里面C:\Users\ZQ\.caffe\dependencies\libraries_v140_x64_py27_1.1.0\libraries\include\boost-1_61\boost\config\compiler\nvcc.hpp注释掉这三行（line22-24）
 
@@ -62,7 +63,11 @@
   
   #endif()
   
-  添加  
+  GTX950M机器添加  
+  
+  set(\__cuda_arch_bin "50")
+  
+  GTX1080Ti机器添加
   
   set(\__cuda_arch_bin "60 61")
   
