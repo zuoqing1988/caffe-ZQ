@@ -217,7 +217,7 @@ layer {
     bias_term: false
     pad: 1
     kernel_size: 3
-    #group: 32
+    group: 32
     #engine: CAFFE
     weight_filler {
       type: "msra"
@@ -351,7 +351,7 @@ layer {
     pad: 1
     kernel_size: 3
     stride: 2
-    #group: 64
+    group: 64
     #engine: CAFFE
     weight_filler {
       type: "msra"
@@ -484,7 +484,7 @@ layer {
     bias_term: false
     pad: 1
     kernel_size: 3
-    #group: 128
+    group: 128
     #engine: CAFFE
     weight_filler {
       type: "msra"
@@ -618,7 +618,7 @@ layer {
     pad: 1
     kernel_size: 3
     stride: 2
-    #group: 128
+    group: 128
     #engine: CAFFE
     weight_filler {
       type: "msra"
@@ -751,7 +751,7 @@ layer {
     bias_term: false
     pad: 1
     kernel_size: 3
-    #group: 256
+    group: 256
     #engine: CAFFE
     weight_filler {
       type: "msra"
@@ -885,7 +885,7 @@ layer {
     pad: 1
     kernel_size: 3
     stride: 2
-    #group: 256
+    group: 256
     #engine: CAFFE
     weight_filler {
       type: "msra"
@@ -1018,7 +1018,7 @@ layer {
     bias_term: false
     pad: 1
     kernel_size: 3
-    #group: 512
+    group: 512
     #engine: CAFFE
     weight_filler {
       type: "msra"
@@ -1151,7 +1151,7 @@ layer {
     bias_term: false
     pad: 1
     kernel_size: 3
-    #group: 512
+    group: 512
     #engine: CAFFE
     weight_filler {
       type: "msra"
@@ -1284,7 +1284,7 @@ layer {
     bias_term: false
     pad: 1
     kernel_size: 3
-    #group: 512
+    group: 512
     #engine: CAFFE
     weight_filler {
       type: "msra"
@@ -1417,7 +1417,7 @@ layer {
     bias_term: false
     pad: 1
     kernel_size: 3
-    #group: 512
+    group: 512
     #engine: CAFFE
     weight_filler {
       type: "msra"
@@ -1550,7 +1550,7 @@ layer {
     bias_term: false
     pad: 1
     kernel_size: 3
-    #group: 512
+    group: 512
     #engine: CAFFE
     weight_filler {
       type: "msra"
@@ -1684,7 +1684,7 @@ layer {
     pad: 1
     kernel_size: 3
     stride: 2
-    #group: 512
+    group: 512
     #engine: CAFFE
     weight_filler {
       type: "msra"
@@ -1817,7 +1817,7 @@ layer {
     bias_term: false
     pad: 1
     kernel_size: 3
-    #group: 1024
+    group: 1024
     #engine: CAFFE
     weight_filler {
       type: "msra"

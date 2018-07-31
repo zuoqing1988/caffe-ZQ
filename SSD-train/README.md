@@ -19,6 +19,11 @@
 
 注意：如果显存小的话，注意更改voc\MobileNetSSD_trian-dw.prototxt里的batch_size，还有voc\MobileNetSSD_test-dw.prototxt里的batch_size
 
+**训练时Test输出的信息**
+
+每3行是一个类，分布是每个batch的平均overlap、每个batch的平均recall、每个batch的平均groundtruth
+最后3行是总的信息
+
 **合并bn层**
 
 voc\MobileNetSSD_deploy.prototxt
@@ -33,6 +38,7 @@ merge_bn.py
 
 是拷贝自https://github.com/chuanqi305/MobileNet-SSD
 
+voc\MobileNetSSD_deploy-dw.prototxt
 
 voc\MobileNetSSD_test-dw.prototxt
 
