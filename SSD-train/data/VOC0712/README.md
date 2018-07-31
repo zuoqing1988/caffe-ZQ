@@ -8,7 +8,7 @@
 
 **训练时间**
 
-我用的一块GTX1080Ti，大概90s/100iters。
+我用的一块GTX1080Ti，大概110s/100iters。
 
 **merge_bn.py**
 
