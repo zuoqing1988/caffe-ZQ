@@ -22,6 +22,7 @@
 **训练时Test输出的信息**
 
 每3行是一个类，分布是每个batch的平均overlap、每个batch的平均recall、每个batch的平均groundtruth
+
 最后3行是总的信息
 
 **合并bn层**
