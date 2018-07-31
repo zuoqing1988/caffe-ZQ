@@ -5,7 +5,7 @@ sys.path.insert(0, caffe_root + 'python')
 import caffe  
 
 train_proto = 'voc\MobileNetSSD_train-dw.prototxt'  
-train_model = 'voc\mobilenet-dw_iter_10000.caffemodel'  #should be your snapshot caffemodel
+train_model = 'snapshot\mobilenet-dw_iter_10000.caffemodel'  #should be your snapshot caffemodel
 
 deploy_proto = 'voc\MobileNetSSD_deploy-dw.prototxt'  
 save_model = 'MobileNetSSD_deploy-dw.caffemodel'
