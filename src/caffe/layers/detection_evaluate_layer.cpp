@@ -6,8 +6,6 @@
 #include "caffe/layers/detection_evaluate_layer.hpp"
 #include "caffe/util/bbox_util.hpp"
 
-#define OUTPUT_MAP 1
-
 namespace caffe {
 
 	template <typename Dtype>
@@ -63,11 +61,7 @@ namespace caffe {
 		vector<int> top_shape(2, 1);
 		
 		
-#ifdef OUTPUT_MAP
-		int num_pos_classes = background_label_id_ == -1 ?
-			num_classes_ : num_classes_ - 1;
-		top_shape.push_back(num_pos_classes *3 + 3);
-#else
+
 		int num_pos_classes = background_label_id_ == -1 ?
 			num_classes_ : num_classes_ - 1;
 		int num_valid_det = 0;
@@ -82,7 +76,6 @@ namespace caffe {
 		// Each row is a 5 dimension vector, which stores
 		// [image_id, label, confidence, true_pos, false_pos]
 		top_shape.push_back(5);
-#endif
 		top[0]->Reshape(top_shape);
 	}
 
@@ -101,30 +94,9 @@ namespace caffe {
 		map<int, LabelBBox> all_gt_bboxes;
 		GetGroundTruth(gt_data, bottom[1]->height(), background_label_id_,
 			true, &all_gt_bboxes);
-#ifdef OUTPUT_MAP
-		int num_valid_det = 0;
-		const Dtype* tmp_det_data = bottom[0]->cpu_data();
-		for (int i = 0; i < bottom[0]->height(); ++i) 
-		{
-			if (tmp_det_data[1] != -1) {
-				++num_valid_det;
-			}
-			tmp_det_data += 7;
-		}
-		int num_pos_classes = background_label_id_ == -1 ?
-			num_classes_ : num_classes_ - 1;
-		std::vector<Dtype> buffer((num_valid_det+num_pos_classes)*5);
-		int total_gt_num = 0;
-		int total_recall_num = 0;
-		double total_overlap = 0;
-		map<int, int> label_gt_num;
-		map<int, int> label_recall_num;
-		map<int, float> label_overlap;
-		Dtype* top_data = &buffer[0];
-		Dtype* out_data = top[0]->mutable_cpu_data();
-#else
+
 		Dtype* top_data = top[0]->mutable_cpu_data();
-#endif
+
 		
 		caffe_set(top[0]->count(), Dtype(0.), top_data);
 		int num_det = 0;
@@ -159,9 +131,6 @@ namespace caffe {
 				{
 					num_pos[iit->first] += count;
 				}
-#ifdef OUTPUT_MAP
-				total_gt_num += count;
-#endif
 			}
 		}
 
@@ -270,22 +239,6 @@ namespace caffe {
 										top_data[num_det * 5 + 3] = 1;
 										top_data[num_det * 5 + 4] = 0;
 										visited[jmax] = true;
-#ifdef OUTPUT_MAP
-										total_recall_num++;
-										total_overlap += overlap_max;
-										if (label_gt_num.find(label) == label_gt_num.end())
-											label_gt_num[label] = 1;
-										else
-											label_gt_num[label] ++;
-										if (label_recall_num.find(label) == label_recall_num.end())
-											label_recall_num[label] = 1;
-										else
-											label_recall_num[label] ++;
-										if (label_overlap.find(label) == label_overlap.end())
-											label_overlap[label] = overlap_max;
-										else
-											label_overlap[label] += overlap_max;
-#endif
 									}
 									else {
 										// false positive (multiple detection).
@@ -312,25 +265,6 @@ namespace caffe {
 				}
 			}
 		}
-#ifdef OUTPUT_MAP
-		
-		int idx = 0;
-		for (int c = 0; c < num_classes_; c++)
-		{
-			if (c == background_label_id_)
-				continue;
-			if (label_overlap.find(c) != label_overlap.end())
-			{
-				out_data[idx * 3 + 0] = label_overlap[c];
-				out_data[idx * 3 + 1] = label_recall_num[c];
-				out_data[idx * 3 + 2] = label_gt_num[c];
-				idx++;
-			}
-		}
-		out_data[idx*3+0] = total_overlap;
-		out_data[idx*3+1] = total_recall_num;
-		out_data[idx*3+2] = total_gt_num;
-#endif
 	}
 
 	INSTANTIATE_CLASS(DetectionEvaluateLayer);
